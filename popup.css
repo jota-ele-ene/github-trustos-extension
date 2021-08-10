@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  width: 400px;
+  font-size: medium;
+}
+
+div#container {
+  padding: 8px 20px;
+}
+
+#popupHeader {
+  background: #0066FF;
+  padding: 20px;
+}
+
+img#logoTTech {
+  height: 25px;
+}
+
+img#logoAOT {
+  height: 12px;
+  float: right;
+  margin-top: 7px;
+}
+
+#FormData-div-vertical {
+    list-style: none;
+}
+
+.FormItem-label {
+  color:#0066FF;
+  font-weight: bold;
+  display: list-item;
+  margin-top: 10px;
+}
+
+.FormItem {
+  width: 100%;
+}
+
+.FormItem-input, .FormItem-textarea {
+  text-align: left;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1.5px solid #006aff;
+  width: -webkit-fill-available;
+  display: block;
+}
+
+.FormItem-textarea {
+  height:200px;
+}
+
+#FormData-CrearButton, #FormData-CerrarButton {
+  text-align: center;
+}
+
+#FormData-CerrarButton, #textClose {
+  display: none;
+}
+
+.clickButton {
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+}

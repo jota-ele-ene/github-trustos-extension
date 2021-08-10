@@ -1,0 +1,33 @@
+{
+  "name": "TrustOS | Certificate your GitHub repo",
+  "description": "Thanks to this extension, a TrustOS buttone will appear in your Github repo page. By clicking it, metadata of the repo are retrieved and send to TrustOS backend to be certificate by blockchain",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["storage", "activeTab", "scripting", "tabs", "webNavigation"],
+  "host_permissions": [
+    "http://github.com/",
+    "https://github.com/"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [{
+    "resources": ["popup.html"],
+    "matches": [ "https://github.com/*","http://github.com/*" ]
+  }],
+  "action": {
+    "default_title": "Let's use blockchain",
+    "default_icon": {
+      "16": "/images/TrustOSCerts16.png",
+      "32": "/images/TrustOSCerts32.png",
+      "48": "/images/TrustOSCerts48.png",
+      "128": "/images/TrustOSCerts128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/TrustOSCerts16.png",
+    "32": "/images/TrustOSCerts32.png",
+    "48": "/images/TrustOSCerts48.png",
+    "128": "/images/TrustOSCerts128.png"
+  }
+}

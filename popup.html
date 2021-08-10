@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="common.css">
+  </head>
+  <body>
+    <div id="popupHeader">
+      <img id="logoTTech" src="images/TTech.png">
+      <img id="logoAOT" src="images/AOT.png">
+    </div>
+    <div id="container">
+      <div id="popupIntro">
+        <p id="textIntro">Vas a hacer el dep&oacute;sito en blockchain a trav&eacute;s de <b>TrustOSCerts</b> del c&oacute;digo fuente de tu proyecto. Revisa la informaci&oacute;n y ad&aacute;ptala seg&uacute;n tu criterio.</p>
+        <p id="textClose">Hemos enviado la solicitud de registro a <b>TrustOS</b></p>
+      </div>
+      <div id="FormData" class="FormData">
+        <div id="FormData-div-vertical">
+          <div class="FormItem">
+            <label class="FormItem-label">Nombre operaci&oacute;n</label>
+            <input class="FormItem-input" type="text" id="FormItem-name" name="operationName" autocomplete="off" value="">
+          </div>
+        </div>
+        <div id="FormData-div-vertical">
+          <div class="FormItem">
+            <label class="FormItem-label">Token de acceso</label>
+            <input class="FormItem-input" type="text" id="FormItem-name" name="accessToken" autocomplete="off" value="">
+          </div>
+        </div>
+        <div id="FormData-div-vertical">
+          <div class="FormItem">
+            <label class="FormItem-label">Informaci&oacute;n adicional</label>
+            <textarea class="FormItem-textarea" type="text" id="" name="additionalInfo">Additional information...</textarea>
+          </div>
+        </div>
+        <div id="FormData-CrearButton">
+          <button id="CrearButton" class="clickButton">Enviar a <span class="clickButton">TrustOS</span>
+          </button>
+        </div>
+      </div>
+      <div id="FormData-CerrarButton">
+        <button id="CerrarButton" class="clickButton">Volver a GitHub</button>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
