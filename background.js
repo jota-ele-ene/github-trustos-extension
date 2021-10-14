@@ -56,57 +56,63 @@ function injectTrustOSButton(details) {
   });
 }
 
-chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
+//chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
   // Page uses History API and we heard a pushSate/replaceState
-  //console.log("webNavigation.onHistoryStateUpdated triggered!");
-  injectTrustOSButton(details);
-}, {url: [{hostSuffix: 'github.com'}]});
+//  console.log("webNavigation.onHistoryStateUpdated triggered!");
+//  injectTrustOSButton(details);
+//}, {url: [{hostSuffix: 'github.com'}]});
 
-chrome.webNavigation.onDOMContentLoaded.addListener(function(details) {
-  // Page loaded/reloaded
-  //console.log("webNavigation.onDOMContentLoaded triggered!");
-  injectTrustOSButton(details);
-}, {url: [{hostSuffix: 'github.com'}]});
-
-
-//   webNavigation Events
+//   webNavigation Events (https://developer.chrome.com/docs/extensions/reference/webNavigation/)
 //
 //   Events triggered when reload:
 //   onBeforeNavigate > onCommitted > onDOMContentLoaded > onCompleted
 //
+//   If the history API is used to modify the state of a frame (e.g. using history.pushState()):
+//   onHistoryStateUpdated event is fired after onDOMContentLoaded.
 //
-//chrome.webNavigation.onBeforeNavigate.addListener(function() {
-//    console.log("webNavigation.onBeforeNavigate triggered!");
+//  Others: onCreatedNavigationTarget, onErrorOccurred, onHistoryStateUpdated, onReferenceFragmentUpdated, onTabReplaced
+//
+
+
+//chrome.webNavigation.onBeforeNavigate.addListener(function(details) {
+//    navigationEvenFired(details,"onBeforeNavigate");
 //});
 //
-//chrome.webNavigation.onCommitted.addListener(function() {
-//    console.log("webNavigation.onCommitted triggered!");
+//chrome.webNavigation.onCommitted.addListener(function(details) {
+//    navigationEvenFired(details,"onCommitted");
 //});
 //
-//chrome.webNavigation.onCompleted.addListener(function() {
-//    console.log("webNavigation.onCompleted triggered!");
+//chrome.webNavigation.onDOMContentLoaded.addListener(function(details) {
+//    navigationEvenFired(details,"onDOMContentLoaded");
 //});
 //
-//chrome.webNavigation.onCreatedNavigationTarget.addListener(function() {
-//    console.log("webNavigation.onCreatedNavigationTarget triggered!");
+chrome.webNavigation.onCompleted.addListener(function(details) {
+    navigationEvenFired(details,"onCompleted");
+}, {url: [{hostSuffix: 'github.com'}]});
+//
+//chrome.webNavigation.onCreatedNavigationTarget.addListener(function(details) {
+//    navigationEvenFired(details,"onCreatedNavigationTarget");
 //});
 //
-//chrome.webNavigation.onDOMContentLoaded.addListener(function() {
-//    console.log("webNavigation.onDOMContentLoaded triggered!");
+//chrome.webNavigation.onErrorOccurred.addListener(function(details) {
+//    navigationEvenFired(details,"onErrorOccurred");
 //});
 //
-//chrome.webNavigation.onErrorOccurred.addListener(function() {
-//    console.log("webNavigation.onErrorOccurred triggered!");
+chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
+    navigationEvenFired(details,"onHistoryStateUpdated");
+}, {url: [{hostSuffix: 'github.com'}]});
+//
+//chrome.webNavigation.onReferenceFragmentUpdated.addListener(function(details) {
+//    navigationEvenFired(details,"onReferenceFragmentUpdated");
 //});
 //
-//chrome.webNavigation.onHistoryStateUpdated.addListener(function() {
-//    console.log("webNavigation.onHistoryStateUpdated triggered!");
+//chrome.webNavigation.onTabReplaced.addListener(function(details) {
+//    navigationEvenFired(details,"onTabReplaced");
 //});
-//
-//chrome.webNavigation.onReferenceFragmentUpdated.addListener(function() {
-//    console.log("webNavigation.onReferenceFragmentUpdated triggered!");
-//});
-//
-//chrome.webNavigation.onTabReplaced.addListener(function() {
-//    console.log("webNavigation.onTabReplaced triggered!");
-//});
+
+function navigationEvenFired(details,event) {
+  let eventFired = event;
+  chrome.storage.sync.set({ eventFired });
+  injectTrustOSButton(details);
+//  var elms = document.evaluate("//a[contains(., 'Download ZIP')]", document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null );
+}
